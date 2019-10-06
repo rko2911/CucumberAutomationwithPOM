@@ -3,12 +3,14 @@ package Basictest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import Utility.Util;
+
 public class CommonSteps extends BasicTest {
 
 	public static boolean enterValue(String propvalue) throws InterruptedException {
 		boolean status=false;
-		String value = prop.getProperty(propvalue + "_value");
-		System.out.println("value to be enter is : " + value);
+		String UserType = prop.getProperty("UserType");
+		String value = Util.readExcel(propvalue, UserType);
 		String name= prop.getProperty(propvalue);
 		String[] valueName= name.split("\\{");
 		String cvalue =valueName[1];

@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import Utility.Log;
+import Utility.Util;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,12 +16,14 @@ public class BasicTest{
 	public static WebDriver driver;
 	public static Properties prop;
 	
+	
 	//Constructor of basic test clads 
 	
 	public BasicTest() {
 		prop=new Properties();
+		Log.info("Setup property file nd read data from it");
 		try {
-			FileReader fi = new FileReader("C:\\Users\\rkojh_000\\workspace\\CucumberQA\\src\\main\\java\\Configuration\\Config.properties");
+			FileReader fi = new FileReader("src\\main\\java\\Configuration\\Config.properties");
 			prop.load(fi);
 		} catch (FileNotFoundException e) {
 			System.out.println("exception : properties find not fount " + e);
@@ -45,7 +50,7 @@ public class BasicTest{
 	}
 		else if (browser.equalsIgnoreCase("firefox")) {
 			System.out.println("Logger info : launching the FF browser");
-			System.setProperty("webdriver.gecko.driver","C:\\Users\\rkojh_000\\workspace\\CucumberQA\\Driver\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver","C:\\Users\\rkojh_000\\git\\CucumberAutomationwithPOM\\Driver\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.get(prop.getProperty(url));
 			status = true;
